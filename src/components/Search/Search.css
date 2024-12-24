@@ -1,0 +1,43 @@
+.search {
+    width: 100%;
+    position: relative;
+}
+
+.search input {
+    width: 100%;
+    padding: 10px 10px 10px 50px;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.17);
+    transition: border 0.3s ease;
+}
+
+.search input:focus,
+.search input:hover {
+    border: 1px solid rgba(0, 0, 0, 0.559);
+}
+
+.clean-placeholder-icon {
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 20px;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.search-placeholder-icon {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 20px;
+    opacity: 0.5;
+}
+
+.clean-placeholder-icon:hover {
+    opacity: 0.9;
+}

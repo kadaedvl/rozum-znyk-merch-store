@@ -1,0 +1,35 @@
+.sort {
+    position: relative;
+}
+.sort span {
+    color: orange;
+    transition: color 0.3s ease;
+    border-bottom: 1px solid orange;
+}
+
+.sort span:hover {
+    cursor: pointer;
+    color: rgb(187, 121, 0);
+    border-bottom: 1px solid rgb(187, 121, 0);
+}
+.sort-popap {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    width: 250px;
+    border-radius: 10px;
+    overflow: hidden;
+    z-index: 5;
+}
+.sort-popap li {
+    background-color: rgb(238, 238, 238);
+    padding: 10px;
+}
+.sort-popap li.active {
+    background-color: black;
+    color: white;
+}
+.sort-popap li:hover {
+    cursor: pointer;
+    background-color: rgb(197, 197, 197);
+}

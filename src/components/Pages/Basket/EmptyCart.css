@@ -1,0 +1,44 @@
+/* EmptyCart.css */
+.empty-cart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    background-color: #f9f9f9;
+  }
+  
+  .empty-cart-content {
+    text-align: center;
+    padding: 20px;
+    background: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+  }
+  
+  .empty-cart-title {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 12px;
+  }
+  
+  .empty-cart-text {
+    font-size: 16px;
+    color: #777;
+    margin-bottom: 20px;
+  }
+  
+  .empty-cart-button {
+    padding: 12px 24px;
+    font-size: 16px;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .empty-cart-button:hover {
+    background-color: #0056b3;
+  }
+  

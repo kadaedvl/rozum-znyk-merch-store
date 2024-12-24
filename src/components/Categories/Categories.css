@@ -1,0 +1,21 @@
+.categories-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
+
+.categories-list li {
+    padding: 10px;
+    background-color: rgb(238, 238, 238);
+    border-radius: 10px;
+}
+
+.categories-list li.active{
+    background-color: black;
+    color: white;
+}
+.categories-list li:hover {
+    background-color: rgb(197, 197, 197);
+    cursor: pointer;
+}

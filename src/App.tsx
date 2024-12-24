@@ -32,8 +32,6 @@ const App: React.FC = () => {
   const { sortType, categories, searchValue, currentPage }: FiltreSliceType = useSelector(filterSelector)
   const { items, status }: ProductsSliceType = useSelector(productsSeletor)
 
-
-
   const GetItems = async () => {
     const category = categories === 'all' ? '' : `category=${categories}`;
     const order = sortType.includes('-') ? 'asc' : 'desc';

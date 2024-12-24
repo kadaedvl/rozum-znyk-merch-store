@@ -5,11 +5,11 @@ import { basketSelector, removeAllProduts } from '../../../features/counter/bask
 import { Link } from 'react-router-dom';
 import EmptyCart from './EmptyCart';
 import { useAppDispatch } from '../../../app/store';
-import React from 'react';
 
 const Basket: React.FC = () => {
     const dispatch = useAppDispatch();
     const { items, totalPrice, totalAmount } = useSelector(basketSelector)
+
     if (items.length <= 0) {
         return (<EmptyCart />)
     } else

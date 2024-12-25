@@ -2,8 +2,8 @@ import { useEffect, useRef, useState } from 'react';
 import './Sort.css'
 
 import { useSelector } from 'react-redux'
-import { filterSelector, setSortType } from '../../features/counter/filtreSlice'
-import { useAppDispatch } from '../../app/store';
+import { filterSelector, setSortType } from '../../redux/slices/filtreSlice'
+import { useAppDispatch } from '../../redux/store';
 
 type SortTypeBase = {
   id: string;

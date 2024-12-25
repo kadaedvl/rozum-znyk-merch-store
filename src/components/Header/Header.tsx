@@ -1,10 +1,10 @@
-import './style.css'
-import logo from './logo.svg'
+import './Header.css'
+import logo from './Header-logo.svg'
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux'
-import { basketSelector } from '../../features/counter/basket';
+import { basketSelector } from '../../redux/slices/basket';
 import { useEffect, useRef } from 'react';
-import { ItemType } from '../../features/counter/products';
+import { ItemType } from '../../redux/slices/products';
 
 type HeaderPropsType = {
   items: ItemType[];

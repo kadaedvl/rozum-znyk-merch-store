@@ -1,13 +1,17 @@
 import { createRoot } from 'react-dom/client'
+import { lazy, Suspense } from 'react';
 import { Routes, Route } from "react-router";
 import { BrowserRouter } from 'react-router-dom';
-import Basket from './components/Pages/Basket/Basket';
-import App from './App'
-import './index.css'
-import { store } from './app/store'
 import { Provider } from 'react-redux'
-import OneItemPage from './components/Pages/Basket/OneItemPage';
+import { store } from './redux/store'
+import App from './App'
 import MainLayout from './layouts/MainLayout';
+import Loading from './components/Loading/Loading';
+import './index.css'
+
+const Basket = lazy(() => import('./Pages/Basket/Basket'))
+const ProductDetailsPage = lazy(() => import('./Pages/ProductDetailsPage/ProductDetailsPage'))
+const NotFound = lazy(() => import('./Pages/NotFound/NotFound'))
 
 const root = document.getElementById('root')
 if (root) {
@@ -17,13 +21,12 @@ if (root) {
         <Routes>
           <Route path='/' element={<MainLayout />}>
             <Route path="" element={<App />} />
-            <Route path="basket/" element={<Basket />} />
-            <Route path="product/:id" element={<OneItemPage />} />
-            <Route path="*" element={<h1>Нічого не знайдено</h1>} />
+            <Route path="basket/" element={<Suspense fallback={<Loading />}><Basket /></Suspense>} />
+            <Route path="product/:id" element={<Suspense fallback={<Loading />}><ProductDetailsPage /></Suspense>} />
+            <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
       </BrowserRouter>
     </Provider>
   )
 }
-

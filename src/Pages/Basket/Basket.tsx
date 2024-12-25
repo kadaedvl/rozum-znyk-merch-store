@@ -1,17 +1,17 @@
 import './Basket.css'
-import Item from './Item';
 import { useSelector } from 'react-redux'
-import { basketSelector, removeAllProduts } from '../../../features/counter/basket'
+import { basketSelector, removeAllProduts } from '../../redux/slices/basket'
 import { Link } from 'react-router-dom';
-import EmptyCart from './EmptyCart';
-import { useAppDispatch } from '../../../app/store';
+import { useAppDispatch } from '../../redux/store';
+import EmptyBasket from './EmptyBasket';
+import BasketItem from './BasketItem';
 
 const Basket: React.FC = () => {
     const dispatch = useAppDispatch();
     const { items, totalPrice, totalAmount } = useSelector(basketSelector)
 
     if (items.length <= 0) {
-        return (<EmptyCart />)
+        return (<EmptyBasket />)
     } else
         return (
             <main>
@@ -23,7 +23,7 @@ const Basket: React.FC = () => {
                     <ul className='productList'>
                         {
                             items.map((item) => (
-                                <Item key={item.id} {...item} />
+                                <BasketItem key={item.id} {...item} />
                             ))
                         }
 

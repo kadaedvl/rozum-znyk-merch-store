@@ -1,9 +1,9 @@
-import { useAppDispatch } from '../../../app/store';
-import { removeItem, addProduct, minusCountOneItem } from '../../../features/counter/basket'
-import { ItemType } from '../../../features/counter/products';
+import { useAppDispatch } from '../../redux/store';
+import { removeItem, addProduct, minusCountOneItem } from '../../redux/slices/basket'
+import { ItemType } from '../../redux/slices/products';
 
 
-const Item: React.FC<ItemType> = ({ id, name, description, images, price, count }) => {
+const BasketItem: React.FC<ItemType> = ({ id, name, description, images, price, count }) => {
     const dispatch = useAppDispatch();
 
     const onClickRemoveItemById = () => {
@@ -38,4 +38,4 @@ const Item: React.FC<ItemType> = ({ id, name, description, images, price, count 
     )
 }
 
-export default Item;
+export default BasketItem;

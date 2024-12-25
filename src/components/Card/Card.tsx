@@ -1,9 +1,9 @@
 import './Card.css'
 import { useSelector } from 'react-redux'
-import { addProduct, basketSelector } from '../../features/counter/basket'
+import { addProduct, basketSelector } from '../../redux/slices/basket'
 import { Link } from 'react-router-dom';
-import { useAppDispatch } from '../../app/store';
-import { ItemType } from '../../features/counter/products';
+import { useAppDispatch } from '../../redux/store';
+import { ItemType } from '../../redux/slices/products';
 
 const Card: React.FC<ItemType> = ({ id, name, description, price, rating, images, sizes, count }) => {
     const dispatch = useAppDispatch();

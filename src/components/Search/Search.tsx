@@ -1,10 +1,10 @@
 import './Search.css'
 import close from './close.svg'
 import searchImg from './search.svg'
-import { setSearchValue } from '../../features/counter/filtreSlice'
+import { setSearchValue } from '../../redux/slices/filtreSlice'
 import { ChangeEvent, useCallback, useRef, useState } from 'react'
 import debounce from 'lodash.debounce'
-import { useAppDispatch } from '../../app/store'
+import { useAppDispatch } from '../../redux/store'
 
 
 const Search: React.FC = () => {

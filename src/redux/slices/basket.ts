@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RootState } from '../../app/store';
-import { ItemType } from './products';
+import { RootState } from '../../redux/store';
+import { ItemType } from '../../redux/slices/products';
 import { getProductFromLS } from '../../utils/getProductFromLS';
 import { calcTotalPrice } from '../../utils/calcTotalPrice';
 import { calcTotamAmount } from '../../utils/calcTotamAmount';

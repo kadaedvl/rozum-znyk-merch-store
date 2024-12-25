@@ -9,25 +9,16 @@ import qs from 'qs'
 import './App.css'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { filterSelector, FiltreSliceType, setFilters } from './features/counter/filtreSlice'
-import { fetchProducts, ItemType, productsSeletor, ProductsSliceType } from './features/counter/products'
-import { useAppDispatch } from './app/store'
+import { filterSelector, FiltreSliceType, setFilters } from './redux/slices/filtreSlice'
+import { fetchProducts, ItemType, productsSeletor, ProductsSliceType, Status } from './redux/slices/products'
+import { useAppDispatch } from './redux/store'
 
-
-type FilterType = {
-  sortType: string;
-  categories: string;
-  searchValue: string;
-  currentPage: string;
-}
 const App: React.FC = () => {
   const isSeacrh = useRef(false);
   const isMounted = useRef(false);
   const dispatch = useAppDispatch()
   const navigate = useNavigate();
   const [cardOnPage, setCardOnPage] = useState(3);
-
-
 
   const { sortType, categories, searchValue, currentPage }: FiltreSliceType = useSelector(filterSelector)
   const { items, status }: ProductsSliceType = useSelector(productsSeletor)
@@ -40,17 +31,22 @@ const App: React.FC = () => {
 
     dispatch(fetchProducts({ category, order, sortValue, search, currentPage }))
   }
-  // useEffect(() => {
-  //   if (window.location.search) {
-  //     const params = qs.parse(window.location.search.substring(1));
-  //     dispatch(setFilters({
-  //       ...params,
-  //     }));
-  //     isSeacrh.current = true;
-  //   } else {
-  //     GetItems();
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (window.location.search) {
+      const params = qs.parse(window.location.search.substring(1));
+      const filters: FiltreSliceType = {
+        sortType: params.sortType as string || 'price',
+        categories: params.categories as string || 'all',
+        searchValue: params.searchValue as string || '',
+        currentPage: Number(params.currentPage) || 1,
+      };
+      dispatch(setFilters(filters));
+      isSeacrh.current = true;
+      console.log(status)
+    } else {
+      GetItems();
+    }
+  }, []);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -60,22 +56,22 @@ const App: React.FC = () => {
     isSeacrh.current = false;
   }, [categories, sortType, searchValue, currentPage]);
 
-  // useEffect(() => {
-  //   if (isMounted.current) {
-  //     const queryString = qs.stringify({
-  //       sortType,
-  //       categories,
-  //       currentPage
-  //     });
-  //     if (queryString) {
-  //       navigate(`?${queryString}`);
-  //     }
-  //   }
-  //   isMounted.current = true;
-  // }, [categories, sortType, currentPage]);
+  useEffect(() => {
+    if (isMounted.current) {
+      const queryString = qs.stringify({
+        sortType,
+        categories,
+        currentPage
+      });
+      if (queryString) {
+        navigate(`?${queryString}`);
+      }
+    }
+    isMounted.current = true;
+  }, [categories, sortType, currentPage]);
 
 
-  const lastPostIndex: number = currentPage * cardOnPage;
+  const lastPostIndex: number = Number(currentPage) * cardOnPage;
   const firstPostIndex: number = lastPostIndex - cardOnPage;
   const curenPost: ItemType[] = items.slice(firstPostIndex, lastPostIndex);
 
@@ -91,7 +87,7 @@ const App: React.FC = () => {
       </div>
       <hr></hr>
       <ul className='maincontent'>
-        {status === 'error' ? <div>Сталася помилка завантаження даних з серверу спробуйте пізніше</div> : status === 'loading' ? skeletons : products}
+        {status === Status.ERROR ? <div>Сталася помилка завантаження даних з серверу спробуйте пізніше</div> : status === Status.LOADING ? skeletons : products}
       </ul>
       <Pagination length={items.length} cardOnPage={cardOnPage} />
     </main>

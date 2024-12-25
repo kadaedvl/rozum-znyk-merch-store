@@ -1,8 +1,8 @@
 import './Categories.css'
 
 import { useSelector } from 'react-redux'
-import { filterSelector, setCategories } from '../../features/counter/filtreSlice'
-import { useAppDispatch } from '../../app/store';
+import { filterSelector, setCategories } from '../../redux/slices/filtreSlice'
+import { useAppDispatch } from '../../redux/store';
 
 const Categories: React.FC = () => {
 

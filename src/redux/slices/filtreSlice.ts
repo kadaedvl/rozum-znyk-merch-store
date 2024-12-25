@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RootState } from '../../app/store';
+import { RootState } from '../../redux/store';
 
 export type FiltreSliceType = {
     sortType: string;
@@ -32,8 +32,8 @@ export const filtreSlice = createSlice({
             state.currentPage = action.payload;
         },
         setFilters(state, action: PayloadAction<FiltreSliceType>) {
-            state.currentPage = Number(action.payload.currentPage);
             state.categories = action.payload.categories;
+            state.currentPage = action.payload.currentPage;
             state.sortType = action.payload.sortType;
         }
     },

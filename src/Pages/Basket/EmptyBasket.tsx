@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
-import './EmptyCart.css';
+import './EmptyBasket.css';
 
-const EmptyCart: React.FC = () => {
+const EmptyBasket: React.FC = () => {
     return (
         <div className="empty-cart">
             <div className="empty-cart-content">
@@ -15,4 +15,4 @@ const EmptyCart: React.FC = () => {
     );
 };
 
-export default EmptyCart;
+export default EmptyBasket;

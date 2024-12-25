@@ -1,4 +1,4 @@
-import { ItemType } from "../features/counter/products";
+import { ItemType } from "../redux/slices/products";
 
 export const calcTotalPrice = (items: ItemType[]) => {
     return items.reduce((sum, obj) => {

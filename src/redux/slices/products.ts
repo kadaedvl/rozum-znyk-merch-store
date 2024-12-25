@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { RootState } from '../../app/store';
+import { RootState } from '../store';
 
 type fetchProductsPropsType = {
     category: string;
@@ -46,7 +46,7 @@ const initialState: ProductsSliceType = {
     status: 'loading',
 }
 
-enum Status {
+export enum Status {
     LOADING = 'loading',
     SAVE = 'save',
     ERROR = 'error',

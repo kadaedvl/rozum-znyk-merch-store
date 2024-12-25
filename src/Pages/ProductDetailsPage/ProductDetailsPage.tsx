@@ -1,14 +1,14 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import './OneItemPage.css'
-import { addProduct } from "../../../features/counter/basket";
-import Loading from "../../Loading";
-import { useAppDispatch } from "../../../app/store";
-import { ItemType } from "../../../features/counter/products";
+import './ProductDetailsPage.css'
+import { addProduct } from "../../redux/slices/basket";
+import Loading from "../../components/Loading/Loading";
+import { useAppDispatch } from "../../redux/store";
+import { ItemType } from "../../redux/slices/products";
 
 
-const OneItemPage: React.FC = () => {
+const ProductDetailsPage: React.FC = () => {
     const navigate = useNavigate()
     const { id } = useParams();
     const dispatch = useAppDispatch();
@@ -55,4 +55,4 @@ const OneItemPage: React.FC = () => {
         )
 }
 
-export default OneItemPage;
+export default ProductDetailsPage;

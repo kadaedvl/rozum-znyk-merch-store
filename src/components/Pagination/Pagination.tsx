@@ -1,7 +1,7 @@
 import './Pagination.css'
-import { filterSelector, setCurrentPage } from '../../features/counter/filtreSlice'
+import { filterSelector, setCurrentPage } from '../../redux/slices/filtreSlice'
 import { useSelector } from 'react-redux'
-import { useAppDispatch } from '../../app/store';
+import { useAppDispatch } from '../../redux/store';
 
 type PaginationParamsType = {
     length: number;
@@ -27,7 +27,7 @@ const Pagination: React.FC<PaginationParamsType> = ({ length, cardOnPage }) => {
                 {paginationArray.map((index) => (
                     <li
                         key={index}
-                        className={index === currentPage ? 'active' : ''}
+                        className={index === Number(currentPage) ? 'active' : ''}
                         onClick={() => dispatch(setCurrentPage(index))}
                     >{index}</li>
                 ))}
